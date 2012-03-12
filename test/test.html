@@ -9,7 +9,14 @@
 
 <script>
 
-$.aux.vcard.create().generate()
+try {
+
+//alert('xxx: ' + $.aux.vcard.contentLine);
+
+var vcard = $.aux.vcard.create();
+vcard.addLine(new $.aux.vcard.contentLine('FN', 'Alexander'));
+
+alert('result: ' + vcard.generate());
 
 //var result = $.aux.vcard.create({
 //	'name': 'Ivanov;Aleksandr',
@@ -18,6 +25,11 @@ $.aux.vcard.create().generate()
 //
 //alert('json: ' + result.generate());
 //alert('json: ' + JSON.stringify(result.generate()));
+
+}
+catch(e) {
+	alert('e: ' + e)
+}
 
 </script>
 
