@@ -9,13 +9,6 @@
 		var name = '';
 		var value = '';
 
-		if(arguments.length == 1)
-			self.parse(arguments[0]);
-		else if(arguments.length > 1) {
-			name = arguments[0];
-			value = arguments[1];
-		}
-
 		this.parse = function(string) {
 			if($.isPlainObject(string)) {
 				if(string.hasOwnProperty('name')) name = string.name;
@@ -31,6 +24,13 @@
 
 		this.getName = function() {return(name);}
 		this.getValue = function() {return(value);}
+		
+		if(arguments.length == 1)
+			self.parse(arguments[0]);
+		else if(arguments.length > 1) {
+			name = arguments[0];
+			value = arguments[1];
+		}
 	}
 
 	function contentLine(/* name, value, params, group */) {
@@ -62,6 +62,8 @@
 
 		// TODO Implement parser.
 		this.parse = function(string) {
+			alert('parse');
+			params = [];
 			var parts = string.split(':');
 			// We should have data too.
 			if(parts.length > 1) {
@@ -74,8 +76,11 @@
 						name = list[1];
 					}
 					else {
-						group = '';
+						group = null;
 						name = defs[0];
+					}
+					for(var i = 1; i < defs.length; i++) {
+						params.push(new parameter(defs[i]));
 					}
 				}
 			}
@@ -105,10 +110,15 @@
 		// We either got vCard string and should parse it or we got object with all data.
 		if(arguments.length == 1) {
 			incoming = arguments[0];
-			if(incoming instanceof String)
+			if(incoming instanceof String ||	typeof incoming == 'string') {
 				self.parse(incoming);
-			else if($.isPlainObject(incoming))
+				alert('string');
+			}
+			else if($.isPlainObject(incoming)) {
 				self.setData(incoming);
+				alert('object');
+			} else
+			alert('oopsie');
 		}
 		else {
 			incoming = {};

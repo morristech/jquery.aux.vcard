@@ -16,7 +16,10 @@ try {
 var vcard = $.aux.vcard.create();
 vcard.addLine(new $.aux.vcard.contentLine('FN', 'Alexander'));
 
-alert('result: ' + vcard.generate());
+var line = new $.aux.vcard.contentLine('grp.FN;zzz;yyy:Aleksandr;Ivanov');
+alert('line: ' + line.getName() + ' / ' + line.getValue() + ' / ' + line.getGroup() + ' / ' + line.getParams.length);
+
+//alert('result: ' + vcard.generate());
 
 //var result = $.aux.vcard.create({
 //	'name': 'Ivanov;Aleksandr',
