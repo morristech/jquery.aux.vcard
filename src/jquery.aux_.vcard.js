@@ -61,7 +61,25 @@
 		}
 
 		// TODO Implement parser.
-		this.parse = function(string) { }
+		this.parse = function(string) {
+			var parts = string.split(':');
+			// We should have data too.
+			if(parts.length > 1) {
+				var defs = parts [0].split(';');
+				var value = parts [1];
+				if(defs.length > 0) {
+					var list = defs[0].split('.');
+					if(list.length > 1) {
+						group = list[0];
+						name = list[1];
+					}
+					else {
+						group = '';
+						name = defs[0];
+					}
+				}
+			}
+		}
 
 		this.setData = function(data) {
 			if(data.hasOwnProperty('group')) group = data.group;
