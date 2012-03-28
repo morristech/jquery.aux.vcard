@@ -61,7 +61,7 @@
 		}
 
 		this.parse = function(string) {
-			alert('parse');
+			//alert('parse');
 			params = [];
 			var parts = string.split(':');
 			// We should have data too.
@@ -116,9 +116,9 @@
 			}
 			else if($.isPlainObject(incoming)) {
 				self.setData(incoming);
-				alert('object');
+				//alert('object');
 			} else
-			alert('oopsie');
+			//alert('oopsie');
 		}
 		else {
 			incoming = {};
