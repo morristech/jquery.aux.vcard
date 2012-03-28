@@ -60,7 +60,6 @@
 			return(result);
 		}
 
-		// TODO Implement parser.
 		this.parse = function(string) {
 			alert('parse');
 			params = [];
@@ -68,7 +67,8 @@
 			// We should have data too.
 			if(parts.length > 1) {
 				var defs = parts [0].split(';');
-				var value = parts [1];
+				value = parts [1];
+
 				if(defs.length > 0) {
 					var list = defs[0].split('.');
 					if(list.length > 1) {
@@ -112,7 +112,7 @@
 			incoming = arguments[0];
 			if(incoming instanceof String ||	typeof incoming == 'string') {
 				self.parse(incoming);
-				alert('string');
+				//alert('string');
 			}
 			else if($.isPlainObject(incoming)) {
 				self.setData(incoming);
